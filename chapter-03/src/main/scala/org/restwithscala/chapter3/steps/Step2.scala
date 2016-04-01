@@ -1,21 +1,13 @@
 package org.restwithscala.chapter3.steps
 
-import javax.servlet.http.HttpServletRequest
-
-
-import io.netty.handler.codec.http.HttpResponse
-import org.restwithscala.common.model.{Status, Note, Person, Task}
+import org.restwithscala.common.model.{Note, Status, Task}
 import org.restwithscala.common.service.TaskService
-import unfiltered.netty.future.Plan
+import unfiltered.netty._
 import unfiltered.request.Params.Extract
 import unfiltered.request._
 import unfiltered.response._
-import unfiltered.netty._
-import dispatch._
-import scala.concurrent.ExecutionContext
-import scala.concurrent.{ExecutionContext,Future}
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
 /**
  * In this step we'll focus on parameter and body extraction.

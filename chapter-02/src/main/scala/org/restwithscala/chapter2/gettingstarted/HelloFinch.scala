@@ -1,10 +1,13 @@
 package org.restwithscala.chapter2.gettingstarted
 
-import io.finch.route._
-import com.twitter.finagle.Httpx
+import io.finch._
+import com.twitter.finagle.Http
 
 object HelloFinch extends App {
-  Httpx.serve(":8080", (Get / "hello" /> "Hello, Finch!").toService)
+
+  val app = get("hello"){ Ok("Hello, Finch!") }
+
+  Http.serve(":8080", app.toService)
 
   println("Press <enter> to exit.")
   Console.in.read.toChar

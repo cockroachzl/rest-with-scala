@@ -1,11 +1,8 @@
 package org.restwithscala.chapter1
 
-import org.http4s.dsl.Root
-import org.http4s.server.blaze.BlazeBuilder
-
-import org.http4s.dsl._
+import org.http4s.dsl.{Root, _}
 import org.http4s.server._
-import org.http4s.util.task
+import org.http4s.server.blaze.BlazeBuilder
 
 object EchoService extends App {
   val task = BlazeBuilder.bindHttp(8080)

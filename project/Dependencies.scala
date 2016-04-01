@@ -21,15 +21,15 @@ object DependenciesChapter1 {
 }
 
 object DependenciesChapter2 {
-  lazy val finchVersion = "0.7.0"
+  lazy val finchVersion = "0.10.0"
   val backendDeps = Seq(
     "com.github.finagle" %% "finch-core" % finchVersion,
     "com.github.finagle" %% "finch-argonaut" % finchVersion
   )
 
 
-  val resolvers =
-    Seq("Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots")
+/*  val resolvers =
+    Seq("Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots")*/
 
 
 }

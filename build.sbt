@@ -3,7 +3,7 @@ import sbt._
 lazy val commonSettings = Seq(
   organization := "org.restwithscala",
   version := "0.1.0",
-  scalaVersion := "2.11.6",
+  scalaVersion := "2.11.7",
   checksums in update := Nil
 )
 
@@ -57,7 +57,7 @@ lazy val chapter02 = (project in file ("chapter-02"))
   .dependsOn(common)
   .settings(commonSettings: _*)
   .settings(name := "chapter-02",
-    resolvers := DependenciesChapter2.resolvers,
+//    resolvers := DependenciesChapter2.resolvers,
     libraryDependencies := DependenciesChapter2.backendDeps,
     fullRunTask(runCH02HelloFinch, Compile, "org.restwithscala.chapter2.gettingstarted.HelloFinch"),
     fullRunTask(runCH02FinchRouters, Compile, "org.restwithscala.chapter2.routes.FinchRoutes"),

@@ -1,3 +1,4 @@
+/*
 package org.restwithscala.chapter2.steps
 
 import org.restwithscala.common.model.{SearchParams, Task}
@@ -163,3 +164,4 @@ object FinchStep4 extends App {
   }
 }
 
+*/

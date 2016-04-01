@@ -1,3 +1,4 @@
+/*
 package org.restwithscala.chapter2.steps
 
 import argonaut.Json
@@ -182,3 +183,4 @@ object FinchChapter7 extends App {
   }
 }
 
+*/

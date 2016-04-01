@@ -1,3 +1,5 @@
+/*
+
 package org.restwithscala.chapter2.steps
 
 import com.twitter.finagle.httpx.Request
@@ -134,3 +136,5 @@ object FinchStep2 extends App {
   }
 }
 
+
+*/
