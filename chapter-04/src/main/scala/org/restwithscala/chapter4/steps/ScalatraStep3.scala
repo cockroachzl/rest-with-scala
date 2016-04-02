@@ -96,7 +96,7 @@ class ScalatraStep3(system: ActorSystem) extends ScalatraServlet
     new AsyncResult() {
       override val is = Future {
         Try { params("id").toInt } match {
-          case Success(id) => s"Get task with id: $id "
+          case Success(id) => TaskService.select(id)
           case Failure(e) => BadRequest(reason = s"Can't parse id: ${e.getMessage}")
         }
       }

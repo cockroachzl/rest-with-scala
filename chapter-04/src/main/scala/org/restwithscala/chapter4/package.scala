@@ -28,8 +28,6 @@ package object chapter4 {
       // create a server and attach the context
       val server = new Server(8080)
       server.setHandler(context)
-
-      // add a lifecycle listener so we can stop the server from the console
       server.addLifeCycleListener(new AbstractLifeCycleListener() {
         override def lifeCycleStarted(event: LifeCycle): Unit = {
           println("Press <enter> to exit.")
@@ -45,3 +43,5 @@ package object chapter4 {
     }
   }
 }
+
+// add a lifecycle listener so we can stop the server from the console

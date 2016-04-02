@@ -3,7 +3,7 @@ package org.restwithscala.chapter4.steps
 import javax.servlet.ServletContext
 
 import org.restwithscala.chapter4.JettyLauncher
-import org.scalatra.{NotFound, BadRequest, ScalatraServlet, LifeCycle}
+import org.scalatra.{BadRequest, LifeCycle, ScalatraServlet}
 
 import scala.util.{Failure, Success, Try}
 

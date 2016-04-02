@@ -52,7 +52,7 @@ class ScalatraStep2(system: ActorSystem) extends ScalatraServlet with FutureSupp
   }
 
   post("/tasks") {
-    new AsyncResult() { // we use a asyncresult snce we access the parameters
+    new AsyncResult() { // we use a asyncresult since we access the parameters
       override val is  = {
         // convert provided request parameters to a task and store it
         val createdTask = TaskService.insert(Task(
@@ -79,7 +79,7 @@ class ScalatraStep2(system: ActorSystem) extends ScalatraServlet with FutureSupp
     new AsyncResult() {
       override val is = Future {
         Try { params("id").toInt } match {
-          case Success(id) => s"Get task with id: $id "
+          case Success(id) => TaskService.select(id).map(_.toString)
           case Failure(e) => BadRequest(reason = s"Can't parse id: ${e.getMessage}")
         }
       }
