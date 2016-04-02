@@ -2,10 +2,9 @@ package org.restwithscala.chapter5.steps
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.marshalling._
+import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import akka.http.scaladsl.model.HttpHeader.ParsingResult
 import akka.http.scaladsl.model._
-import akka.http.scaladsl.model.MediaTypes._
 import akka.http.scaladsl.model.headers.HttpCookie
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server._
@@ -13,9 +12,6 @@ import akka.stream.ActorMaterializer
 import org.restwithscala.common.model._
 import org.restwithscala.common.service.TaskService
 import spray.json.DefaultJsonProtocol
-import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
-import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
-import akka.http.scaladsl.unmarshalling.Unmarshal
 
 import scala.util.{Failure, Success}
 

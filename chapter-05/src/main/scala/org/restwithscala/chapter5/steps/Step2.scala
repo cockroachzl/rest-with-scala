@@ -15,15 +15,6 @@ import org.restwithscala.common.service.TaskService
 
 import scala.util.{Failure, Success}
 
-/**
- * First step. This step just shows a number of simple directives. We show the following standard things here:
- *
- *
- * Complete the request by returning the value of requestContext.complete(...)
- * Reject the request by returning the value of requestContext.reject(...) (see Rejections)
- * Fail the request by returning the value of requestContext.fail(...) or by just throwing an exception (see Exception Handling)
- * Do any kind of asynchronous processing and instantly return a Future[RouteResult] to be eventually completed later
- */
 object AkkaHttpDSLStep2 extends App {
 
   import system.dispatcher
