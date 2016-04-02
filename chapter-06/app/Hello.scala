@@ -6,7 +6,7 @@ object Hello extends Controller {
 
   def helloWorld = Action {
 
-    Ok("Hello Play, now with reload")
+    Ok("Hello Play, now with reload again.")
   }
 
 }
