@@ -103,6 +103,7 @@ lazy val runCH04HelloScalatra = taskKey[Unit]("Run chapter 3 - Scalatra HelloWor
 lazy val runCH04Step1 = taskKey[Unit]("Run chapter 4 - Step1")
 lazy val runCH04Step2 = taskKey[Unit]("Run chapter 4 - Step2")
 lazy val runCH04Step3 = taskKey[Unit]("Run chapter 4 - Step3")
+lazy val runCH07Scalatra = taskKey[Unit]("Run chapter 7 - Scalatra")
 
 
 addCommandAlias("runCH04-HelloScalatra", "; chapter04/runCH04HelloScalatra")
@@ -113,7 +114,7 @@ addCommandAlias("runCH04-runCH04Step2", "; chapter04/runCH04Step2")
 
 addCommandAlias("runCH04-runCH04Step3", "; chapter04/runCH04Step3")
 
-addCommandAlias("runCH07-Scalatra", "; chapter04/runCH07Unfiltered")
+addCommandAlias("runCH07-Scalatra", "; chapter04/runCH07Scalatra")
 
 
 lazy val chapter04 = (project in file ("chapter-04"))
@@ -125,7 +126,7 @@ lazy val chapter04 = (project in file ("chapter-04"))
     fullRunTask(runCH04Step1, Compile, "org.restwithscala.chapter4.steps.ScalatraRunnerStep1"),
     fullRunTask(runCH04Step2, Compile, "org.restwithscala.chapter4.steps.ScalatraRunnerStep2"),
     fullRunTask(runCH04Step3, Compile, "org.restwithscala.chapter4.steps.ScalatraRunnerStep3"),
-    fullRunTask(runCH07Unfiltered, Compile, "org.restwithscala.chapter4.steps.ScalatraRunnerChapter7"))
+    fullRunTask(runCH07Scalatra, Compile, "org.restwithscala.chapter4.steps.ScalatraRunnerChapter7"))
 
 
 lazy val runCH05HelloAkkaDSL= taskKey[Unit]("Run chapter 5 - Scalatra HelloWorld")
