@@ -1,18 +1,19 @@
 package controllers
 
-import org.restwithscala.common.model.{Note, Task, Person, Status => MStatus}
+import org.restwithscala.common.model.{Note, Person, Task, Status => MStatus}
 import org.restwithscala.common.service.TaskService
 import play.api.data.validation.ValidationError
 import play.api.http.Writeable
 import play.api.mvc._
-import scala.concurrent.{Future, ExecutionContext}
+
+import scala.concurrent.{ExecutionContext, Future}
 import ExecutionContext.Implicits.global
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.libs.json.Reads._
-
 import javax.inject._
 
+import akka.util.ByteString
 import play.api.http.DefaultHttpErrorHandler
 import play.api._
 import play.api.mvc.Results._
@@ -87,8 +88,8 @@ object Step3 extends Controller {
 //  implicit val fmtTask = Json.format[Task]
 
   // simple implicit to convert our tasks to a simple string for now
-  implicit def wTask: Writeable[Task] = Writeable(_.toString.getBytes, Some("application/txt"))
-  implicit def wListTask: Writeable[List[Task]] = Writeable(b => Json.prettyPrint(Json.toJson(b)).getBytes, Some("application/json"))
+  implicit def wTask: Writeable[Task] = Writeable(t => ByteString(Json.prettyPrint(Json.toJson(t))), Some("application/txt"))
+  implicit def wListTask: Writeable[List[Task]] = Writeable(b => ByteString(Json.prettyPrint(Json.toJson(b))), Some("application/json"))
 
   def createTask = Action.async { request =>
 

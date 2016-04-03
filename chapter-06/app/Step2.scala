@@ -1,9 +1,11 @@
 package controllers
 
-import org.restwithscala.common.model.{Note, Task, Person, Status => MStatus}
+import akka.util.ByteString
+import org.restwithscala.common.model.{Note, Person, Task, Status => MStatus}
 import org.restwithscala.common.service.TaskService
 import play.api.http.Writeable
 import play.api.mvc._
+
 import scala.concurrent.ExecutionContext
 import ExecutionContext.Implicits.global
 
@@ -23,8 +25,8 @@ import ExecutionContext.Implicits.global
 object Step2 extends Controller {
 
   // simple implicit to convert our tasks to a simple string for now
-  implicit def wTask: Writeable[Task] = Writeable(_.toString.getBytes, Some("application/text"))
-  implicit def wListTask: Writeable[List[Task]] = Writeable(_.mkString("\n").getBytes, Some("application/text"))
+  implicit def wTask: Writeable[Task] = Writeable(t=> ByteString(t.toString), Some("application/text"))
+  implicit def wListTask: Writeable[List[Task]] = Writeable(t=>ByteString(t.mkString("\n")), Some("application/text"))
 
   def createTask(title: String, person: Option[String], status: String) = Action.async { request =>
     val body: Option[String] = request.body.asText

@@ -76,7 +76,7 @@ object DependenciesChapter5 {
 
 object DependenciesChapter6 {
 
-  lazy val playVersion = "2.4.6"
+  lazy val playVersion = "2.5.1"
 
   val backendDeps = Seq (
     "com.typesafe.play" %% "play" % playVersion,
@@ -90,7 +90,7 @@ object DependenciesChapter7 {
     "io.argonaut" %% "argonaut" % "6.0.4",
     "org.json4s" %% "json4s-native" % "3.2.10",
     "io.spray" %%  "spray-json" % "1.3.2",
-    "com.typesafe.play" %% "play-json" % "2.4.0"
+    "com.typesafe.play" %% "play-json" % "2.5.1"
   )
 
   val resolvers = Seq("Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots")
