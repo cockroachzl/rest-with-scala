@@ -73,9 +73,10 @@ class ScalatraChapter7(system: ActorSystem) extends ScalatraServlet
     }
   }
 
-  after("/task") {
+  after("/tasks") {
+    Log.info("after /task")
     request.getMethod match {
-      case "POST" => response.setContentType(MediaType)
+      case "POST" => {Log.info(s"setContentType as $MediaType"); response.setContentType(MediaType)}
       case _ => // do nothing, since it isn't a post
     }
   }
