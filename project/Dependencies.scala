@@ -76,7 +76,7 @@ object DependenciesChapter5 {
 
 object DependenciesChapter6 {
 
-  lazy val playVersion = "2.4.0"
+  lazy val playVersion = "2.4.6"
 
   val backendDeps = Seq (
     "com.typesafe.play" %% "play" % playVersion,
