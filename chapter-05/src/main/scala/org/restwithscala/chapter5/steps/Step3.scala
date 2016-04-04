@@ -31,10 +31,10 @@ object AkkaHttpDSLStep3 extends App {
   // This implicit is used to convert the Task to a HttpEntity so
   // that akka-http can return it.
   implicit val StringMarshaller: ToEntityMarshaller[Task] =
-    Marshaller.opaque { s ⇒ HttpEntity(ContentType(`text/plain`), s.toString) }
+    Marshaller.opaque { s ⇒ HttpEntity(ContentTypes.`text/plain(UTF-8)`, s.toString) }
 
   implicit val ListMarshaller: ToEntityMarshaller[List[Task]] =
-    Marshaller.opaque { s ⇒ HttpEntity(ContentType(`text/plain`), s.toString) }
+    Marshaller.opaque { s ⇒ HttpEntity(ContentTypes.`text/plain(UTF-8)`, s.toString) }
 
   val sampleHeader: HttpHeader = (HttpHeader.parse("helloheader", "hellovalue") match {
     case ParsingResult.Ok(header, _) => Some(header)
@@ -136,7 +136,7 @@ object AkkaHttpDSLStep3 extends App {
   // gracefully shutdown the server
   bindingFuture
     .flatMap(_.unbind())
-    .onComplete(_ => system.shutdown())
+    .onComplete(_ => system.terminate())
 }
 
 

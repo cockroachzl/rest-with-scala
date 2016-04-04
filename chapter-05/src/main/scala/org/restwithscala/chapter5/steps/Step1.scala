@@ -59,5 +59,5 @@ object AkkaHttpDSLStep1 extends App {
   import system.dispatcher
   bindingFuture
     .flatMap(_.unbind())
-    .onComplete(_ => system.shutdown())
+    .onComplete(_ => system.terminate())
 }
