@@ -50,15 +50,15 @@ object DependenciesChapter3 {
 
 object DependenciesChapter4 {
 
-  lazy val scalatraVersion = "2.3.0"
+  lazy val scalatraVersion = "2.3.1"
   val backendDeps = Seq(
     "org.scalatra" %% "scalatra" % scalatraVersion,
     "org.scalatra" %% "scalatra-json" % scalatraVersion,
     "org.scalatra" %% "scalatra-commands" % scalatraVersion,
-    "org.json4s"   %% "json4s-jackson" % "3.2.9",
+    "org.json4s"   %% "json4s-jackson" % "3.2.11",
     "ch.qos.logback"    %  "logback-classic"   % "1.1.3"            ,
     "org.eclipse.jetty" %  "jetty-webapp"      % "9.2.10.v20150310",
-    "com.typesafe.akka" %% "akka-actor" % "2.3.4"
+    "com.typesafe.akka" %% "akka-actor" % "2.4.3"
   )
 }
 
@@ -88,7 +88,7 @@ object DependenciesChapter7 {
 
   val backendDeps = Seq (
     "io.argonaut" %% "argonaut" % "6.0.4",
-    "org.json4s" %% "json4s-native" % "3.2.10",
+    "org.json4s" %% "json4s-native" % "3.2.11",
     "io.spray" %%  "spray-json" % "1.3.2",
     "com.typesafe.play" %% "play-json" % "2.5.1"
   )
