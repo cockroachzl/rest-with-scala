@@ -133,7 +133,7 @@ object AkkaHttpDSLStep4 extends App with AkkaJSONProtocol {
   // gracefully shutdown the server
   bindingFuture
     .flatMap(_.unbind())
-    .onComplete(_ => system.shutdown())
+    .onComplete(_ => system.terminate())
 }
 
 

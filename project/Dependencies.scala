@@ -64,11 +64,11 @@ object DependenciesChapter4 {
 
 object DependenciesChapter5 {
 
-  lazy val akkaHttpVersion = "1.0"
+  lazy val akkaHttpVersion = "2.4.3"
 
   val backendDeps = Seq (
-    "com.typesafe.akka" %% "akka-stream-experimental" % akkaHttpVersion,
-    "com.typesafe.akka" %% "akka-http-core-experimental" % akkaHttpVersion,
+    "com.typesafe.akka" %% "akka-stream" % akkaHttpVersion,
+    "com.typesafe.akka" %% "akka-http-core" % akkaHttpVersion,
     "com.typesafe.akka" %% "akka-http-experimental" % akkaHttpVersion,
     "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaHttpVersion
   )

@@ -5,7 +5,6 @@ import akka.http.scaladsl.model.ResponseEntity
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.marshalling._
 import akka.http.scaladsl.model.HttpHeader.ParsingResult
-import akka.http.scaladsl.model.MediaType.Encoding
 import akka.http.scaladsl.model.MediaTypes._
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.model.MediaTypes
@@ -70,7 +69,7 @@ import scala.util.{Failure, Success}
  */
 object AkkaHttpChapter7 extends App with AkkaJSONProtocol {
 
-  val CustomContentType = MediaType.custom("application/vnd.restwithscala.task+json",Encoding.Fixed(HttpCharsets.`UTF-8`))
+  val CustomContentType = MediaType.customWithFixedCharset("application", "vnd.restwithscala.task+json",HttpCharsets.`UTF-8`)
 
   def mapEntity(entity: ResponseEntity): ResponseEntity = entity match {
     case HttpEntity.Strict(contentType, data) =>
@@ -126,7 +125,7 @@ object AkkaHttpChapter7 extends App with AkkaJSONProtocol {
         } ~
             post {
                 (entity(as[String]) & (extractRequest)) { (ent, request) =>
-                request.entity.contentType() match {
+                request.entity.contentType match {
                   case ContentType(MediaType("application/vnd.restwithscala.task+json"), _) =>
                     mapRequest({ req => req.copy(entity = HttpEntity.apply(MediaTypes.`application/json`, ent)) }) {
                       (entity(as[Task])) {
@@ -184,5 +183,5 @@ object AkkaHttpChapter7 extends App with AkkaJSONProtocol {
   // gracefully shutdown the server
   bindingFuture
     .flatMap(_.unbind())
-    .onComplete(_ => system.shutdown())
+    .onComplete(_ => system.terminate())
 }

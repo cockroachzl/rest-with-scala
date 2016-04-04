@@ -6,6 +6,7 @@ import akka.http.scaladsl.marshalling._
 import akka.http.scaladsl.model.HttpHeader.ParsingResult
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.model.MediaTypes._
+import akka.http.scaladsl.server.directives.ParameterDirectives.ParamMagnet
 import akka.http.scaladsl.model.headers.HttpCookie
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.MethodRejection
@@ -26,7 +27,7 @@ object AkkaHttpDSLStep2 extends App {
   // This implicit is used to convert the Task to a HttpEntity so
   // that akka-http can return it.
   implicit val StringMarshaller: ToEntityMarshaller[Task] =
-    Marshaller.opaque { s ⇒ HttpEntity(ContentType(`text/plain`), s.toString) }
+    Marshaller.opaque { s ⇒ HttpEntity(ContentTypes.`text/plain(UTF-8)`, s.toString) }
 
   val sampleHeader: HttpHeader = (HttpHeader.parse("helloheader","hellovalue") match {
     case ParsingResult.Ok(header, _) => Some(header)
@@ -45,7 +46,7 @@ object AkkaHttpDSLStep2 extends App {
           TaskService.all.map(_.foldLeft("")((z, b) => z + b.toString + "\n"))
         }
       } ~
-        ((post) & (parameters("title", "person".?, "status" ? "new"))) { (title, assignedTo, status) => {
+        ((post) & (parameters('title, 'person.?, 'status ? "new"))) { (title, assignedTo, status) => {
           (entity(as[String])) { body => {
             complete {
               val createdTask = TaskService.insert(Task(-1, title, body, assignedTo.map(Person(_)), List.empty, Status(status)))
@@ -96,7 +97,7 @@ object AkkaHttpDSLStep2 extends App {
   // gracefully shutdown the server
   bindingFuture
     .flatMap(_.unbind())
-    .onComplete(_ => system.shutdown())
+    .onComplete(_ => system.terminate())
 }
 
 
